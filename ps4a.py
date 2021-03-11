@@ -77,10 +77,8 @@ def getWordScore(word, n):
     letters_used = 0
     score = 0
     for key in SCRABBLE_LETTER_VALUES.keys():
-        # print(key)
         for letter in word:
             if letter == key:
-                print(letter)
                 letters_used += 1
                 letters_points += SCRABBLE_LETTER_VALUES[key]
 
@@ -157,7 +155,13 @@ def updateHand(hand, word):
     hand: dictionary (string -> int)    
     returns: dictionary (string -> int)
     """
-    # TO DO ... <-- Remove this comment when you code this function
+    updated_hand = hand.copy()
+    for letter in word:
+        for key in updated_hand.keys():
+            if letter == key:
+                updated_hand[key] -= 1
+    return updated_hand
+
 
 
 
